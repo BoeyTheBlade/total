@@ -7,9 +7,6 @@ require('dotenv').config()
 var indexRouter = require('./routes/index');
 var picturesRouter = require('./routes/pictures');
 const fileUpload = require('express-fileupload');
-
-var app = express();
-
 const { auth } = require('express-openid-connect');
 
 const config = {
@@ -21,6 +18,10 @@ const port = process.env.PORT || 3000;
 if (!config.baseURL && !process.env.BASE_URL && process.env.PORT && process.env.NODE_ENV !== 'production') {
   config.baseURL = `http://localhost:${port}`;
 }
+
+var app = express();
+
+
 
 app.use(auth(config));
 
