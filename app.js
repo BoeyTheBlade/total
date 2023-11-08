@@ -9,6 +9,9 @@ var picturesRouter = require('./routes/pictures');
 const fileUpload = require('express-fileupload');
 const { auth } = require('express-openid-connect');
 
+var app = express();
+
+
 const config = {
   authRequired: false,
   auth0Logout: true
@@ -18,10 +21,6 @@ const port = process.env.PORT || 3000;
 if (!config.baseURL && !process.env.BASE_URL && process.env.PORT && process.env.NODE_ENV !== 'production') {
   config.baseURL = `http://localhost:${port}`;
 }
-
-var app = express();
-
-
 
 app.use(auth(config));
 
